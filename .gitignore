@@ -68,3 +68,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Folders generated on build
+/MonoBleedingEdge/
+/dandyhacks2020_Data/
+UnityCrashHandler64.exe
+UnityPlayer.dll
+dandyhacks2020.exe
