@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	// private bool jumping=false;
 	// private bool isdead=false;
     private bool attacking;
+    private bool colliding;
 
 
     // Start is called before the first frame update
@@ -22,11 +23,15 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool ("jump", false);//Jumping animation is deactivated
     }
 
-    void OnCollisionEnter2D(Collision2D coll) {
-        Debug.Log("Collision with player");
-	}
+    private void OnTriggerEnter2D(Collider2D collider) {
+        Debug.Log("Trigger!");
+        if(attacking) {
+            Destroy(collider.gameObject);
+        }
+    }
 
     // Update is called once per frame
+    private int attackFrameCount = 0;
     void Update() {
         // Debug.Log(attacking);
 
@@ -34,9 +39,15 @@ public class PlayerMovement : MonoBehaviour {
             Debug.Log("Mouse button down 0\n");
             anim.Play("attacking", -1, 0f);
             attacking = true;
-        } else {
+        } else if (attackFrameCount > 60) {
             attacking = false;
+            attackFrameCount = 0;
         }
+
+        if(attacking) {
+            attackFrameCount++;
+        }
+
 
         //Horizontal movement
         float hMove = Input.GetAxis ("Horizontal");
