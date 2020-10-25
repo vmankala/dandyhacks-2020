@@ -1597,8 +1597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGUI: 1
-  offsetX: 0
-  offsetY: 0
+  offsetX: 370
+  offsetY: 200
 --- !u!114 &1890051101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,10 +1666,12 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 7508769173523708198, guid: bfcf21f4c6717cd40b27f5c58bebfce9,
+    type: 3}
   autoCreatePlayer: 1
-  playerSpawnMethod: 0
-  spawnPrefabs: []
+  playerSpawnMethod: 1
+  spawnPrefabs:
+  - {fileID: 6373638330656368711, guid: a83dce06db45ea446900663d6e4fed2d, type: 3}
 --- !u!4 &1890051103
 Transform:
   m_ObjectHideFlags: 0
