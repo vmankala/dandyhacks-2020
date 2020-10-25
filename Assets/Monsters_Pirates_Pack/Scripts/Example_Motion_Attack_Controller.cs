@@ -8,7 +8,7 @@ public class Example_Motion_Attack_Controller : MonoBehaviour {
 	private bool jumping=false;
 	private bool isdead=false;
 	//public bool run=false;
-	private bool attack=false;
+	private bool attack = false;
 	private string aux="";
 	//--
 	void Start () {
@@ -18,11 +18,12 @@ public class Example_Motion_Attack_Controller : MonoBehaviour {
 		anim.SetBool ("walk", false);//Walking animation is deactivated
 		anim.SetBool ("dead", false);//Dying animation is deactivated
 		anim.SetBool ("jump", false);//Jumping animation is deactivated
+		anim.SetBool ("attacking", false);
 	}
 	
 	void OnCollisionEnter2D(Collision2D coll) {
 		//if (coll.gameObject.tag == "Ground"){//################Important, the floor Tag must be "Ground" to detect the collision!!!!
-			jumping=false;
+			// jumping=false;
 			anim.SetBool ("jump", false);
 		//}
 	}
@@ -32,7 +33,8 @@ public class Example_Motion_Attack_Controller : MonoBehaviour {
 		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("attacking")) {
 			
 		} else {
-			anim.SetBool ("attack", false);
+			// anim.SetBool ("attacking", false);
+			attack = false;
 		}
 		//--
 		//Debug.Log ("+---- " + aux);
@@ -46,11 +48,14 @@ public class Example_Motion_Attack_Controller : MonoBehaviour {
 			}
 			//--END DYING
 
-			//--JUMPING
 			if (Input.GetMouseButtonDown(0)){
-					anim.SetBool ("attack", true);
-					anim.Play("attacking", -1, 0f);
+				Debug.Log("Mouse button down 0\n");
+				attack = true;
+				// anim.SetBool ("attacking", true);
+				anim.Play("attacking", -1, 0f);
 			}
+
+			//--JUMPING
 			if (Input.GetButtonDown("Jump")){
 				if(jumping==false){//only once time each jump
 					GetComponent<Rigidbody2D>().AddForce(new Vector2(0f,200));
