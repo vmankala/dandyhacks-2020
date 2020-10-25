@@ -16,6 +16,7 @@ public class PlayerMovement : NetworkBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        enabled = true;
         maxspeed=4;//Set walk speed
 		faceright=true;//Default right side
         attacking = false;
