@@ -22,7 +22,9 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool ("jump", false);//Jumping animation is deactivated
     }
 
-    //TODO deal with collisions
+    void OnCollisionEnter2D(Collision2D coll) {
+        Debug.Log("Collision with player");
+	}
 
     // Update is called once per frame
     void Update() {
