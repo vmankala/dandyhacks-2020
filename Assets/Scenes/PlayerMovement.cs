@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Mirror;
+using UnityEngine.Networking;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : NetworkBehaviour {
     private float maxspeed; //walk speed
 	Animator anim;
 	private bool faceright; //face side of sprite activated
@@ -34,6 +36,11 @@ public class PlayerMovement : MonoBehaviour {
     private int attackFrameCount = 0;
     void Update() {
         // Debug.Log(attacking);
+        if (!isLocalPlayer) { return; }
+
+        if (isLocalPlayer) {
+            Camera.main.transform.position = this.transform.position + new Vector3(0,0,-10);
+        }
 
         if (Input.GetMouseButtonDown(0)){
             Debug.Log("Mouse button down 0\n");
